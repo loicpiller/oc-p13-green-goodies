@@ -2,6 +2,11 @@
 
 {% block page_title %}Accueil{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/home.scss') }}">
+{% endblock %}
+
 {% block page_content %}
 
 <section class="hero">
