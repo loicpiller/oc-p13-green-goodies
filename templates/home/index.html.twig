@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block page_title %}Accueil{% endblock %}
+
+{% block page_content %}
+
+<section class="hero">
+    <div class="container hero__inner">
+        <div class="hero__text">
+            <h1>Bienvenue</h1>
+            <p>Découvrez notre univers de produits durables et éthiques pour une consommation responsable</p>
+            <p>Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter</p>
+        </div>
+        <img src="{{ asset('images/home/sustainable-fashion-protest-signs-cardboard.webp') }}"
+            alt="Pancartes de manifestation pour la mode durable, dont une en carton indiquant 'Less New = Less CO2', posées dans un intérieur avec fleurs séchées"
+        />
+    </div>
+</section>
+
+<section class="products">
+    <div class="container">
+        <h2>Nos produits</h2>
+        <div class="products__gallery">
+            {% for product in products %}
+                <div class="product-card">
+                    <img src="{{ asset(product.picture) }}" alt="{{ product.name }}" />
+                    <span class="product-card__title">{{ product.name }}</span>
+                    <span class="product-card__description">{{ product.shortDescription }}</span>
+                    <span class="product-card__price">{{ product.price|number_format(2, ',', '') }}€</span>
+                    <a class="btn btn--light">Voir le produit</a>
+                </div>
+            {% else %}
+                <p>Aucun produit n’est disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="belief">
+    <div class="container">
+        <div class="belief__text">
+            <h2>Notre conviction</h2>
+            <p>Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants.
+            Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique</p>
+        </div>
+        <img src="{{ asset('images/home/acacia-branch-orange-flowers-macro.webp') }}"
+            alt="Gros plan sur une branche d'acacia avec des fleurs pompons orange sur fond clair"
+        />
+    </div>
+</section>
+
+<section class="values">
+    <div class="container">
+        <img src="{{ asset('images/home/green-tinted-trash-bags-stacked.webp') }}"
+            alt="Trois sacs poubelle noués empilés, d'une même teinte verte monochrome que l'arrière plan"
+        />
+        <div class="values__text">
+            <h2>Nos valeurs</h2>
+            <p>Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité.
+            Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques.
+            Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
