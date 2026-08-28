@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block page_title %}{{ product.name }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/product.scss') }}">
+{% endblock %}
+
+{% block page_content %}
+
+<section class="product-detail">
+    <div class="container">
+        <div class="product-detail__media">
+            <img src="{{ asset(product.picture) }}" alt="{{ product.name }}" />
+        </div>
+        <div class="product-detail__info">
+            <h1>{{ product.name }}</h1>
+            <span class="product-detail__info__price">{{ product.price|number_format(2, ',', '') }}€</span>
+            <h2>Description</h2>
+            <p class="product-detail__info__full-description">{{ product.fullDescription }}</p>
+            <div class="product-detail__info__actions">
+                <a class="btn" href="#">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
